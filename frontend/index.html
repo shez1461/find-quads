@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Find Quads - Demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="A Web app">
+    <link rel="icon" href="/images/favicon.png">
+    <!-- Bootstrap CSS library -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <!-- Toastr CSS Notification library -->
+    <link rel="stylesheet" type="text/css" href="css/toastr.min.css"/>
+
+    <!-- jQuery minified library -->
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <!-- Toastr Notification JS Library -->
+    <script type="text/javascript" src="js/toastr.min.js"></script>
+    <!-- Bootstrap JS library -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- Chart.js library-->
+    <script type="text/javascript" src="js/chart.min.js"></script>
+
+    <!-- Custom CSS style -->
+    <link rel="stylesheet" type="text/css" href="css/demo.css"/>
+    <!-- Main -->
+    <script type="text/javascript" src="js/app.js"></script>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+
+      <!-- Back to top button -->
+      <a id="button" class="icon"></a>
+
+      <!-- Logo + Header1 -->
+      <div class="header">
+        <!--<img id="logo" src="images/logo.png" style="width:25px;height:auto;" />-->
+        <h1>Python w/FastAPI Challenge </h1>
+      </div>
+
+      <!-- Flipswitch to switch between dark & light theme -->
+      <div>
+        <nav>
+          <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+              <input type="checkbox" id="checkbox" />
+              <div class="slider round"></div>
+            </label>
+            <em for="checkbox">Dark Mode Theme</em>
+          </div>
+        </nav>
+        <br>
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-auto">
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 1:</span>
+                <input style="width:150px;" id="nameInput1" class="nameGroup" type="text" aria-label="Name1" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput1" class="seqGroup" type="text" aria-label="Sequence1" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input Fields -->
+                <span class="input-group-text">Name & Sequence 2:</span>
+                <input style="width:150px;" id="nameInput2" class="nameGroup" type="text" aria-label="Name2" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput2" class="seqGroup" type="text" aria-label="Sequence2" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 3:</span>
+                <input style="width:150px;" id="nameInput3" class="nameGroup" type="text" aria-label="Name3" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput3" class="seqGroup" type="text" aria-label="Sequence3" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 4:</span>
+                <input style="width:150px;" id="nameInput4" class="nameGroup" type="text" aria-label="Name4" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput4" class="seqGroup" type="text" aria-label="Sequence4" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 5:</span>
+                <input style="width:150px;" id="nameInput5" class="nameGroup" type="text" aria-label="Name5" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput5" class="seqGroup" type="text" aria-label="Sequence5" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input Fields -->
+                <span class="input-group-text">Name & Sequence 6:</span>
+                <input style="width:150px;" id="nameInput6" class="nameGroup" type="text" aria-label="Name6" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput6" class="seqGroup" type="text" aria-label="Sequence6" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 7:</span>
+                <input style="width:150px;" id="nameInput7" class="nameGroup" type="text" aria-label="Name7" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput7" class="seqGroup" type="text" aria-label="Sequence7" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 8:</span>
+                <input style="width:150px;" id="nameInput8" class="nameGroup" type="text" aria-label="Name8" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput8" class="seqGroup" type="text" aria-label="Sequence8" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input Fields -->
+                <span class="input-group-text">Name & Sequence 9:</span>
+                <input style="width:150px;" id="nameInput9" class="nameGroup" type="text" aria-label="Name9" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput9" class="seqGroup" type="text" aria-label="Sequence9" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 10:</span>
+                <input style="width:150px;" id="nameInput10" class="nameGroup" type="text" aria-label="Name10" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput10" class="seqGroup" type="text" aria-label="Sequence10" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 11:</span>
+                <input style="width:150px;" id="nameInput11" class="nameGroup" type="text" aria-label="Name11" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput11" class="seqGroup" type="text" aria-label="Sequence11" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 12:</span>
+                <input style="width:150px;" id="nameInput12" class="nameGroup" type="text" aria-label="Name12" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput12" class="seqGroup" type="text" aria-label="Sequence12" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 13:</span>
+                <input style="width:150px;" id="nameInput13" class="nameGroup" type="text" aria-label="Name13" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput13" class="seqGroup" type="text" aria-label="Sequence13" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 14:</span>
+                <input style="width:150px;" id="nameInput14" class="nameGroup" type="text" aria-label="Name14" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput14" class="seqGroup" type="text" aria-label="Sequence14" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 15:</span>
+                <input style="width:150px;" id="nameInput15" class="nameGroup" type="text" aria-label="Name15" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput15" class="seqGroup" type="text" aria-label="Sequence15" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 16:</span>
+                <input style="width:150px;" id="nameInput16" class="nameGroup" type="text" aria-label="Name16" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput16" class="seqGroup" type="text" aria-label="Sequence16" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 17:</span>
+                <input style="width:150px;" id="nameInput17" class="nameGroup" type="text" aria-label="Name17" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput17" class="seqGroup" type="text" aria-label="Sequence17" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 18:</span>
+                <input style="width:150px;" id="nameInput18" class="nameGroup" type="text" aria-label="Name18" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput18" class="seqGroup" type="text" aria-label="Sequence18" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 19:</span>
+                <input style="width:150px;" id="nameInput19" class="nameGroup" type="text" aria-label="Name19" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput19" class="seqGroup" type="text" aria-label="Sequence19" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 20:</span>
+                <input style="width:150px;" id="nameInput20" class="nameGroup" type="text" aria-label="Name20" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput20" class="seqGroup" type="text" aria-label="Sequence20" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 21:</span>
+                <input style="width:150px;" id="nameInput21" class="nameGroup" type="text" aria-label="Name21" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput21" class="seqGroup" type="text" aria-label="Sequence21" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 22:</span>
+                <input style="width:150px;" id="nameInput22" class="nameGroup" type="text" aria-label="Name22" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput22" class="seqGroup" type="text" aria-label="Sequence22" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 23:</span>
+                <input style="width:150px;" id="nameInput23" class="nameGroup" type="text" aria-label="Name23" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput23" class="seqGroup" type="text" aria-label="Sequence23" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 24:</span>
+                <input style="width:150px;" id="nameInput24" class="nameGroup" type="text" aria-label="Name24" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput24" class="seqGroup" type="text" aria-label="Sequence24" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 25:</span>
+                <input style="width:150px;" id="nameInput25" class="nameGroup" type="text" aria-label="Name25" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput25" class="seqGroup" type="text" aria-label="Sequence25" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 26:</span>
+                <input style="width:150px;" id="nameInput26" class="nameGroup" type="text" aria-label="Name26" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput26" class="seqGroup" type="text" aria-label="Sequence26" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <div class="input-group input-group-sm">
+                <!-- Input fields -->
+                <span class="input-group-text">Name & Sequence 27:</span>
+                <input style="width:150px;" id="nameInput27" class="nameGroup" type="text" aria-label="Name27" class="form-control form-control-sm" minlength="4" maxlength="100" />
+                <input style="width:800px;" id="sequenceInput27" class="seqGroup" type="text" aria-label="Sequence27" class="form-control form-control-sm" minlength="4" maxlength="100" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+              </div>
+
+              <br>
+              <div class="col">
+                <button id="findQuad" class="btn btn-primary" type="">Find [G] Quadruplexes</button>
+              </div>
+              <br>
+
+              <!-- Data extracted fields in table -->
+              <div class="">
+                <table class="table table-sm table-bordered table-success">
+                  <h3>Quadruplexes search for G's synthesising Oligos</h3>
+                  <thead id="tableHeader">
+                    <tr>
+                      <th scope="col">Identity</th>
+                      <th scope="col">#</th>
+                      <th scope="col">Start & End Position</th>
+                    </tr>
+                  </thead>
+                  <tbody id="extractData">
+                    <tr>
+                      <td id="seqName1"></td>
+                      <th id="countQuad1" scope="row"></th>
+                      <td id="startend1"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName2"></td>
+                      <th id="countQuad2" scope="row"></th>
+                      <td id="startend2"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName3"></td>
+                      <th id="countQuad3" scope="row"></th>
+                      <td id="startend3"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName4"></td>
+                      <th id="countQuad4" scope="row"></th>
+                      <td id="startend4"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName5"></td>
+                      <th id="countQuad5" scope="row"></th>
+                      <td id="startend5"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName6"></td>
+                      <th id="countQuad6" scope="row"></th>
+                      <td id="startend6"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName7"></td>
+                      <th id="countQuad7" scope="row"></th>
+                      <td id="startend7"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName8"></td>
+                      <th id="countQuad8" scope="row"></th>
+                      <td id="startend8"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName9"></td>
+                      <th id="countQuad9" scope="row"></th>
+                      <td id="startend9"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName10"></td>
+                      <th id="countQuad10" scope="row"></th>
+                      <td id="startend10"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName11"></td>
+                      <th id="countQuad11" scope="row"></th>
+                      <td id="startend11"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName12"></td>
+                      <th id="countQuad12" scope="row"></th>
+                      <td id="startend12"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName13"></td>
+                      <th id="countQuad13" scope="row"></th>
+                      <td id="startend13"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName14"></td>
+                      <th id="countQuad14" scope="row"></th>
+                      <td id="startend14"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName15"></td>
+                      <th id="countQuad15" scope="row"></th>
+                      <td id="startend15"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName16"></td>
+                      <th id="countQuad16" scope="row"></th>
+                      <td id="startend16"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName17"></td>
+                      <th id="countQuad17" scope="row"></th>
+                      <td id="startend17"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName18"></td>
+                      <th id="countQuad18" scope="row"></th>
+                      <td id="startend18"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName19"></td>
+                      <th id="countQuad19" scope="row"></th>
+                      <td id="startend19"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName20"></td>
+                      <th id="countQuad20" scope="row"></th>
+                      <td id="startend20"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName21"></td>
+                      <th id="countQuad21" scope="row"></th>
+                      <td id="startend21"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName22"></td>
+                      <th id="countQuad22" scope="row"></th>
+                      <td id="startend22"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName23"></td>
+                      <th id="countQuad23" scope="row"></th>
+                      <td id="startend23"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName24"></td>
+                      <th id="countQuad24" scope="row"></th>
+                      <td id="startend24"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName25"></td>
+                      <th id="countQuad25" scope="row"></th>
+                      <td id="startend25"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName26"></td>
+                      <th id="countQuad26" scope="row"></th>
+                      <td id="startend26"></td>
+                    </tr>
+                    <tr>
+                      <td id="seqName27"></td>
+                      <th id="countQuad27" scope="row"></th>
+                      <td id="startend27"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Chart.js -->
+              <div id="displayMyChart" class="footer">
+                <h2>Yield Reduction Rate - G[s] in Oligios Sequences using Chart.js</h2>
+                <canvas id="myChart" width="400" height="400"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <footer class="footer">&copy; Copyrights 2021-2022 by Mohamed Shez. All rights reserved.</footer>
+
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
