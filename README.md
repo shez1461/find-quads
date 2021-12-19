@@ -1,6 +1,6 @@
 # Demo
 
-[![Part 1](https://img.youtube.com/vi/K_KQ3GUvKiE/0.jpg)](https://youtu.be/51g3W9bLeeg)
+[![Part 1](https://img.youtube.com/vi/51g3W9bLeeg/0.jpg)](https://youtu.be/51g3W9bLeeg)
 
 # README - How to run both services - Backend & Frontend
 
